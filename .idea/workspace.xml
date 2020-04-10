@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca62a07b-2764-4cca-b46c-24e3974339f4" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/Data/English/Toys_and_Games_5.rar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/My First Project-8d9aec5cfe29.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Sentiment_analysis_main_run.py" beforeDir="false" afterPath="$PROJECT_DIR$/Sentiment_analysis_main_run.py" afterDir="false" />
@@ -22,8 +24,8 @@
       <file leaf-file-name="Sentiment_analysis_main_run.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Sentiment_analysis_main_run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="161" selection-start-line="161" selection-end-line="161" />
+            <state relative-caret-position="-198">
+              <caret line="191" lean-forward="true" selection-start-line="191" selection-end-line="191" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -413,8 +415,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Sentiment_analysis_main_run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="161" selection-start-line="161" selection-end-line="161" />
+        <state relative-caret-position="-198">
+          <caret line="191" lean-forward="true" selection-start-line="191" selection-end-line="191" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
