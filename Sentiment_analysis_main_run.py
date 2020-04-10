@@ -184,8 +184,8 @@ if __name__ == "__main__":
      #                            lang='english', file_to_save='learning_trans_arbic_to_eng_result.csv', epochs=12)
 
     # lexicon translated arabic -> eng
-    #arabic_to_english_results_pos = run_eng_senti(test_translated_arabic_to_eng_pos_list, sentiment="Positive")
-    #files_api.write_dict_to_csv(arabic_to_english_results_pos, 'translated_lexicon_results_arabic_to_english_pos.csv', encoding=None)
+    arabic_to_english_results_pos = run_eng_senti(test_translated_arabic_to_eng_pos_list, sentiment="Positive")
+    files_api.write_dict_to_csv(arabic_to_english_results_pos, 'translated_lexicon_results_arabic_to_english_pos.csv', encoding=None)
 
     #arabic_to_english_results_neg = run_eng_senti(test_translated_arabic_to_eng_neg_list, sentiment="Negative")
     #files_api.write_dict_to_csv(arabic_to_english_results_neg, 'translated_lexicon_results_arabic_to_english_neg.csv', encoding=None)
@@ -199,12 +199,12 @@ if __name__ == "__main__":
     test_translated_eng_to_arabic_pos_list = translate_list(test_eng_pos_list, 'test_translated_eng_to_arabic_pos_list.txt', target_language='ar')
 
     # learning_translated english->arabic
-    #sentiment_analysis_model_run(train_translated_eng_to_arabic_pos_list, train_translated_eng_to_arabic_neg_list, test_translated_eng_to_arabic_pos_list, test_translated_eng_to_arabic_neg_list, file_to_save='learning_trans_eng_to_arabic_result.csv')
+    sentiment_analysis_model_run(train_translated_eng_to_arabic_pos_list, train_translated_eng_to_arabic_neg_list, test_translated_eng_to_arabic_pos_list, test_translated_eng_to_arabic_neg_list, file_to_save='learning_trans_eng_to_arabic_result.csv')
 
 
     # lexicon translated_eng -> arabic
-    #eng_to_arabic_results_pos = run_eng_senti(test_translated_arabic_to_eng_pos_list, sentiment="Positive")
-    #files_api.write_dict_to_csv(eng_to_arabic_results_pos, 'translated_lexicon_results_english_to_arabic_pos.csv', encoding='utf-8')
+    eng_to_arabic_results_pos = run_eng_senti(test_translated_arabic_to_eng_pos_list, sentiment="Positive")
+    files_api.write_dict_to_csv(eng_to_arabic_results_pos, 'translated_lexicon_results_english_to_arabic_pos.csv', encoding='utf-8')
 
     #eng_to_arabic_results_neg = run_eng_senti(test_translated_arabic_to_eng_neg_list, sentiment="Negative")
     #files_api.write_dict_to_csv(eng_to_arabic_results_neg, 'translated_lexicon_results_aenglish_to_arabic_neg.csv', encoding='utf-8')
