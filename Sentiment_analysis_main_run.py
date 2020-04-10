@@ -168,8 +168,8 @@ if __name__ == "__main__":
 
 # translate
     # translate arabic to english
-    train_translated_arabic_to_eng_neg_list = translate_list(train_arabic_neg_list, 'train_translated_arabic_to_eng_neg_list.txt', target_language='en')
-    train_translated_arabic_to_eng_pos_list = translate_list(train_arabic_pos_list, 'train_translated_arabic_to_eng_pos_list.txt', target_language='en')
+    #train_translated_arabic_to_eng_neg_list = translate_list(train_arabic_neg_list, 'train_translated_arabic_to_eng_neg_list.txt', target_language='en')
+    #train_translated_arabic_to_eng_pos_list = translate_list(train_arabic_pos_list, 'train_translated_arabic_to_eng_pos_list.txt', target_language='en')
 
     #test_translated_arabic_to_eng_neg_list = translate_list(test_arabic_neg_list, 'test_translated_arabic_to_eng_neg_list.txt', target_language='en')
     #test_translated_arabic_to_eng_pos_list = translate_list(test_arabic_pos_list, 'test_translated_arabic_to_eng_pos_list.txt', target_language='en')
@@ -192,11 +192,11 @@ if __name__ == "__main__":
 
 
     # translate english to arabic
-    #train_translated_eng_to_arabic_neg_list = translate_list(train_eng_neg_list, 'train_translated_eng_to_arabic_neg_list.txt', target_language='ar')
-    #train_translated_eng_to_arabic_pos_list = translate_list(train_eng_pos_list, 'train_translated_eng_to_arabic_pos_list.txt', target_language='ar')
+    train_translated_eng_to_arabic_neg_list = translate_list(train_eng_neg_list, 'train_translated_eng_to_arabic_neg_list.txt', target_language='ar')
+    train_translated_eng_to_arabic_pos_list = translate_list(train_eng_pos_list, 'train_translated_eng_to_arabic_pos_list.txt', target_language='ar')
 
-    #test_translated_eng_to_arabic_neg_list = translate_list(test_eng_neg_list, 'test_translated_eng_to_arabic_neg_list.txt', target_language='ar')
-    #test_translated_eng_to_arabic_pos_list = translate_list(test_eng_pos_list, 'test_translated_eng_to_arabic_pos_list.txt', target_language='ar')
+    test_translated_eng_to_arabic_neg_list = translate_list(test_eng_neg_list, 'test_translated_eng_to_arabic_neg_list.txt', target_language='ar')
+    test_translated_eng_to_arabic_pos_list = translate_list(test_eng_pos_list, 'test_translated_eng_to_arabic_pos_list.txt', target_language='ar')
 
     # learning_translated english->arabic
     #sentiment_analysis_model_run(train_translated_eng_to_arabic_pos_list, train_translated_eng_to_arabic_neg_list, test_translated_eng_to_arabic_pos_list, test_translated_eng_to_arabic_neg_list, file_to_save='learning_trans_eng_to_arabic_result.csv')
