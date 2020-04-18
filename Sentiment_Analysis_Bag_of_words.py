@@ -5,7 +5,21 @@ from Sentiment_Analysis_data_prep import clean_file
 import files_api
 import os.path
 
-sentiment_dict = senticnet5.senticnet
+# sentiment_dict = senticnet5.senticnet
+
+def create_dict_of_sentiments(data_path):
+    lexi = {}
+    with open(os.path.join(data_path, 'positive-words.txt'), 'r') as pf:
+        pos_words = pf.read().split('\n')
+    with open(os.path.join(data_path, 'negative-words.txt'), 'r') as nf:
+        neg_words = nf.read().split('\n')
+    for word in pos_words:
+        lexi[word] = 1
+    for word in neg_words:
+        lexi[word] = -1
+    return lexi
+
+sentiment_dict = create_dict_of_sentiments('lexicon/')
 
 # ------------------------------------------------------------------- #
 #                   BAG OF WORDS REPRESENTATION                       #
@@ -26,7 +40,8 @@ def check_if_words_have_senti_arabic(vocab, arab_dict):
 
 
 def get_senti_of_word(word, dict_of_sentiments: dict):
-    return dict_of_sentiments[word][7]
+    return dict_of_sentiments[word]
+    #return dict_of_sentiments[word][7]
 
 
 def get_senti_of_word_arabic(word, dict_of_sentiments: dict):
@@ -46,7 +61,7 @@ def reviews_to_lines(text_list : list, vocab,  lang=None):
     for text in text_list:
         text_and_tokens = []
         original_text = text
-        tokens = clean_file(text)   # clean the file
+        tokens = clean_file(text, lang=lang)   # clean the file
         tokens = [word for word in tokens if word in vocab]   # filter by vocab
         if len(tokens) < 1:
             continue
@@ -69,20 +84,25 @@ def prepare_data(train_reviews, mode):
 
 
 def calc_senti_of_line(line, dict_of_words):
-    sum = 0
+    negative_freq = 0
     for i in range(1, len(line)):
         freq = line[i]
-        if(freq != 0):
+        if freq != 0:
             senti = float(get_senti_of_word(dict_of_words[i], sentiment_dict))
-            sum += senti * freq
-    return 'Positive' if sum > 0  else 'Negative'
+            if senti < 0:
+                negative_freq += freq
+    #total = float(negative_count) / len_count
+    return 'Positive, {}'.format(negative_freq) if negative_freq < 0.21 else 'Negative, {}'.format(negative_freq)
 
 
 def calc_senti_of_line_arabic(line, index_word, arab_dict):
-    sum = 0
+    negative_freq = 0
     for i in range(1, len(line)):
         freq = line[i]
         if freq != 0:
             senti = float(get_senti_of_word_arabic(index_word[i], arab_dict))
-            sum += senti * freq
-    return 'Positive' if sum > 0 else 'Negative'
+            if senti == -0.2:
+                negative_freq += freq * 0.5
+            elif senti == -1:
+                negative_freq += freq
+    return 'Positive' if negative_freq < 0.32 else 'Negative'

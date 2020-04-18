@@ -21,7 +21,7 @@ def run_eng_senti(text_list: list, sentiment=None):
 
     # take all words from all docs, clean it, and save it in a 'vocab'
     Sentiment_Analysis_data_prep.add_words_to_vocab_and_update_count(text_list,
-                                                                     vocab)
+                                                                     vocab, lang='english')
 
     print('The length of the vocab before check if we have senti: ', len(vocab))
     print('Top 3 frequently occuring words:', vocab.most_common(3))
@@ -47,17 +47,19 @@ def run_eng_senti(text_list: list, sentiment=None):
     files_api.copy_to_json(new_words, "new_words_eng")
     print("vocab after: ", len(vocab2))
     # Training Data : reviews to lines
-    list_of_all_phrases = Sentiment_Analysis_Bag_of_words.reviews_to_lines(text_list, vocab2)
+    list_of_all_phrases = Sentiment_Analysis_Bag_of_words.reviews_to_lines(text_list, vocab2, lang='english')
 
     xtrain, index_word = Sentiment_Analysis_Bag_of_words.prepare_data(list_of_all_phrases, mode='freq')
     print("Xtrain shape: ", xtrain.shape)
 
     results_list = []
     for i in range(len(list_of_all_phrases)):
+        senti = Sentiment_Analysis_Bag_of_words.calc_senti_of_line(xtrain[i], index_word)
         results = {'Original text': list_of_all_phrases[i][0],
                    'Senti words': list_of_all_phrases[i][1],
                    'Original Tag': sentiment,
-                   'Senti score': Sentiment_Analysis_Bag_of_words.calc_senti_of_line(xtrain[i], index_word)}
+                   'Senti score': senti.split(',')[1],
+                   'Prediction': senti.split(',')[0]}
         results_list.append(results)
 
     return results_list

@@ -6,7 +6,7 @@ def check_dict(dict_to_check = senticnet5.senticnet):
     positive = 0
     for word in dict_to_check.keys():
         senti = dict_to_check[word][7]
-        if float(senti) < 0:
+        if float(senti) < -0.75:
             negative +=1
         else:
             positive +=1
@@ -19,4 +19,4 @@ def create_git_ignore_file():
         f.write('**/Data')
 
 
-create_git_ignore_file()
+print(check_dict())

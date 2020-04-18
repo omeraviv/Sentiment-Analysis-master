@@ -19,7 +19,7 @@ def run_arabic_senti(all_text_list: list, sentiment=None):
 
     # take all words from all docs, clean it, and save it in a 'vocab'
     Sentiment_Analysis_data_prep.add_words_to_vocab_and_update_count(all_text_list,
-                                                                     vocab, encoding='utf-8', lang='arabic')
+                                                                     vocab, lang='arabic')
 
     print('\nThe length of the vocab_arabic before check if we have senti: ', len(vocab))
     print('Top 3 frequently arabic occurring words:', vocab.most_common(3))

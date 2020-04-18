@@ -20,7 +20,7 @@ def read_csv_to_dict(filename, encoding='utf-8') -> dict:
                 results[key] = -1
 
             elif results[key] == 'Positive' or results[key] == ' Positive':
-                results[key] = 0.75
+                results[key] = 0.2
             elif results[key] == 'Strong Positive' or results[key] == ' Strong Positive':
                 results[key] = 1
             else:

@@ -8,6 +8,7 @@ import string
 from keras.preprocessing.text import Tokenizer
 from keras.models import Sequential
 from keras.layers import Dense
+from keras import utils
 import csv
 from os.path import join
 
@@ -107,13 +108,13 @@ def prepare_data(train_reviews, test_reviews, mode):
 def save_results(path, filename, text, labels_test, prediction):
     with open(join(path, filename), 'w', encoding='utf-8') as out_file:
         writer = csv.writer(out_file)
-        writer.writerow(('Text', "Label", 'Predicted Senti'))
+        writer.writerow(('Text', "Label", 'Predicted Senti', 'Predicted Score'))
         for i in range(len(text)):
             if prediction[i][0] >= 0.5:
                 predicted_senti = "Negative"
             else:
                 predicted_senti = "Positive"
-            writer.writerow([text[i], labels_test[i], predicted_senti])
+            writer.writerow([text[i], labels_test[i], predicted_senti, prediction[i][0]])
 
 
 # the training/learning model
@@ -193,7 +194,6 @@ def sentiment_analysis_model_run(train_pos_reviews, train_neg_reviews, test_pos_
     # -------------------------------------------------------------------#
 
     classifier, model_history = seniment_analysis_model(xtrain, ytrain, epochs=epochs)
-
     # evaluation of the preformance of the trained model on the test set
     loss, accuracy = classifier.evaluate(xtest, ytest, verbose=0)
     prediction = classifier.predict(xtest)
